@@ -1,0 +1,15 @@
+{
+  "expo": {
+    "version": "1.0.1",
+    "android": {
+      "versionCode": 430010001
+    },
+    "ios": {
+      "buildNumber": "1.0.1"
+    },
+    "packagerOpts": {
+      "config": "metro.config.js",
+      "sourceExts": ["js", "jsx", "ts", "tsx", "svg"]
+    }
+  }
+}

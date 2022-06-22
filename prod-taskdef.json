@@ -1,0 +1,77 @@
+{
+  "taskRoleArn": "arn:aws:iam::388731004838:role/ecsInstanceRole_ProdFrontendKalibra",
+  "executionRoleArn": "arn:aws:iam::388731004838:role/ecsTaskExecutionRole_ProdFrontendKalibra",
+  "containerDefinitions": [
+    {
+      "name": "prod-kalibra-frontend-container",
+      "image": "<IMAGE>",
+      "essential": true,
+      "portMappings": [
+        {
+          "containerPort": 5000,
+          "hostPort": 0,
+          "protocol": "tcp"
+        }
+      ],
+      "logConfiguration": {
+        "logDriver": "awslogs",
+        "secretOptions": null,
+        "options": {
+          "awslogs-group": "/ecs/prod-kalibra-frontend-task",
+          "awslogs-region": "ap-southeast-1",
+          "awslogs-stream-prefix": "ecs"
+        }
+      }
+    }
+  ],
+  "compatibilities": ["EC2"],
+  "requiresCompatibilities": ["EC2"],
+  "networkMode": "bridge",
+  "memory": "400",
+  "cpu": "256",
+  "family": "prod-kalibra-frontend-task",
+  "requiresAttributes": [
+    {
+      "targetId": null,
+      "targetType": null,
+      "value": null,
+      "name": "com.amazonaws.ecs.capability.logging-driver.awslogs"
+    },
+    {
+      "targetId": null,
+      "targetType": null,
+      "value": null,
+      "name": "ecs.capability.execution-role-awslogs"
+    },
+    {
+      "targetId": null,
+      "targetType": null,
+      "value": null,
+      "name": "com.amazonaws.ecs.capability.ecr-auth"
+    },
+    {
+      "targetId": null,
+      "targetType": null,
+      "value": null,
+      "name": "com.amazonaws.ecs.capability.docker-remote-api.1.19"
+    },
+    {
+      "targetId": null,
+      "targetType": null,
+      "value": null,
+      "name": "com.amazonaws.ecs.capability.task-iam-role"
+    },
+    {
+      "targetId": null,
+      "targetType": null,
+      "value": null,
+      "name": "ecs.capability.container-ordering"
+    },
+    {
+      "targetId": null,
+      "targetType": null,
+      "value": null,
+      "name": "ecs.capability.execution-role-ecr-pull"
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  kalibra3mobilefe:
+    build:
+      context: .
+      args:
+        - NODE_ENV=development
+    environment:
+      - NODE_ENV=development
+    tty: true
+    ports:
+      - '19006:19006'
+      - '19001:19001'
+      - '19002:19002'
+    volumes:
+      - ./:/opt/kalibra3mobilefe/app:delegated
+      - ./package.json:/opt/kalibra3mobilefe/package.json
+      - ./package-lock.json:/kalibra3mobilefe/package-lock.json
+      - notused:/opt/kalibra3mobilefe/app/node_modules
+    healthcheck:
+      disable: true
+
+volumes:
+  notused:

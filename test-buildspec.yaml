@@ -1,0 +1,49 @@
+version: 0.2
+
+env:
+  variables:
+    ECR_URI: "388731004838.dkr.ecr.us-west-2.amazonaws.com"
+    REPOSITORY_URI: "388731004838.dkr.ecr.us-west-2.amazonaws.com/kalibra2-frontend"
+    TAG_PREFIX: "test"
+    REGION: "us-west-2"
+    BACKEND_API_ENDPOINT: "https://test.kalibra.app/api/"
+    DEBUG_MODE: false
+  secrets-manager:
+    DOCKERHUB_USERNAME: "arn:aws:secretsmanager:us-west-2:388731004838:secret:docker/Account/credentials-4tfe6U:username"
+    DOCKERHUB_PASSWORD: "arn:aws:secretsmanager:us-west-2:388731004838:secret:docker/Account/credentials-4tfe6U:password"
+    COGNITO_USER_POOL_ID: "arn:aws:secretsmanager:us-west-2:388731004838:secret:test/AwsCognitoUserPool/id-jfJg4R"
+    COGNITO_IDENTITY_POOL_ID: "arn:aws:secretsmanager:us-west-2:388731004838:secret:test/AwsCognitoIdentityPool/id-c0VzyA"
+    COGNITO_USER_POOL_WEB_CLIENT_ID: "arn:aws:secretsmanager:us-west-2:388731004838:secret:test/AwsUserPoolWebClient/id-NwSr9w"
+    USER_FILES_S3_BUCKET: "arn:aws:secretsmanager:us-west-2:388731004838:secret:test/KalibraUserFilesS3Bucket/id-1RSkOC"
+    ONESIGNAL_APP_ID: "arn:aws:secretsmanager:us-west-2:388731004838:secret:test/OneSignal/appId-ooSZW9"
+    SLACK_WEB_HOOK_URL: "arn:aws:secretsmanager:us-west-2:388731004838:secret:test/Slack/webHookUrl-HOiUyY"
+    AMPLITUDE_API_KEY: "arn:aws:secretsmanager:us-west-2:388731004838:secret:test/Amplitude/apiKey-nDB9ha"
+    TERRA_DEV_ID: "arn:aws:secretsmanager:us-west-2:388731004838:secret:test/Terra/TERRA_DEV_ID-32K0HM"
+    TERRA_API_KEY: "arn:aws:secretsmanager:us-west-2:388731004838:secret:test/Terra/TERRA_API_KEY-YMPmtt"
+
+phases:
+  pre_build:
+    commands:
+      - echo Logging in to Docker Hub...
+      - echo $DOCKERHUB_PASSWORD | docker login --username $DOCKERHUB_USERNAME --password-stdin
+      - echo Logging in to Amazon ECR...
+      - aws ecr get-login-password --region us-west-2 | docker login --username AWS --password-stdin $ECR_URI
+      - COMMIT_HASH=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c 1-7)
+      - IMAGE_TAG=${COMMIT_HASH:=latest}
+  build:
+    commands:
+      - echo Build started on `date`
+      - echo Building the Docker image...
+      - docker build --build-arg REGION --build-arg COGNITO_USER_POOL_ID --build-arg COGNITO_IDENTITY_POOL_ID --build-arg COGNITO_USER_POOL_WEB_CLIENT_ID --build-arg USER_FILES_S3_BUCKET --build-arg BACKEND_API_ENDPOINT --build-arg ONESIGNAL_APP_ID --build-arg SLACK_WEB_HOOK_URL --build-arg AMPLITUDE_API_KEY --build-arg DEBUG_MODE --build-arg TERRA_DEV_ID --build-arg TERRA_API_KEY -t $REPOSITORY_URI:${TAG_PREFIX}-latest .
+      - docker tag $REPOSITORY_URI:${TAG_PREFIX}-latest $REPOSITORY_URI:${TAG_PREFIX}-${IMAGE_TAG}
+  post_build:
+    commands:
+      - echo Build completed on `date`
+      - echo Pushing the Docker images...
+      - docker push $REPOSITORY_URI:${TAG_PREFIX}-latest
+      - docker push $REPOSITORY_URI:${TAG_PREFIX}-${IMAGE_TAG}
+      - echo Writing imageDetail file...
+      - printf '{"ImageURI":"%s"}' $REPOSITORY_URI:${TAG_PREFIX}-${IMAGE_TAG} > imageDetail.json
+artifacts:
+  files:
+    - imageDetail.json

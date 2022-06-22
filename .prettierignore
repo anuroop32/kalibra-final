@@ -1,0 +1,11 @@
+node_modules
+build
+web-build
+.expo
+.expo-shared
+.husky
+.github
+/ios/Pods
+assets
+.env
+.env.example

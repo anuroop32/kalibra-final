@@ -1,0 +1,11 @@
+# Ignore artifacts:
+node_modules
+build
+web-build
+.expo
+.expo-shared
+.husky
+.github
+.svgrrc
+.env
+.env.example
