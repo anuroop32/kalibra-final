@@ -26,8 +26,7 @@ pipeline {
                  sh "$DOCKERHUB_PASSWORD | docker login --username $DOCKERHUB_USERNAME --password-stdin"
                  echo "Logging in to Amazon ECR..."
                  sh "aws ecr get-login-password --region us-east-2 | docker login --username AWS --password-stdin $ECR_URI"
-                 sh "COMMIT_HASH=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c 1-7)"
-                 sh "IMAGE_TAG=${COMMIT_HASH:=latest}"
+                 sh "IMAGE_TAG= latest"
             }
         }
 
