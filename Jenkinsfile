@@ -1,10 +1,10 @@
 #!/usr/bin/env groovy
 pipeline {
-    agent { node { label 'swarm-ci' } }
+    agent { none }
 
     environment {
-        ECR_URI: "368772107083.dkr.ecr.us-east-2.amazonaws.com/kalibra"
-        REPOSITORY_URI: "https://github.com/Vardaan-16/Kalibra-admin"
+        ECR_URI: '368772107083.dkr.ecr.us-east-2.amazonaws.com/kalibra'
+        REPOSITORY_URI: 'https://github.com/neymar32/kalibra.git'
         TAG_PREFIX: "preprod"
         REGION: "us-east-2"
         BACKEND_API_ENDPOINT: "https://preprod.kalibra.app/api/"
