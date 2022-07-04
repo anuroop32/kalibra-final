@@ -25,7 +25,6 @@ pipeline {
         stage("Prepare") {
             steps {
                  echo "Logging in to Docker Hub..."
-                 sh "$DOCKERHUB_PASSWORD | docker login --username $DOCKERHUB_USERNAME --password-stdin"
                  echo "Logging in to Amazon ECR..."
                  sh "aws ecr get-login-password --region us-east-2 | docker login --username AWS --password-stdin $ECR_URI"
                  sh "IMAGE_TAG= latest"
