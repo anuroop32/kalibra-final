@@ -3,7 +3,7 @@ pipeline {
     agent any 
 
     environment {
-        ECR_URI: '368772107083.dkr.ecr.us-east-2.amazonaws.com/kalibra'
+        ECR_URI= '368772107083.dkr.ecr.us-east-2.amazonaws.com/kalibra'
         REPOSITORY_URI: 'https://github.com/neymar32/kalibra.git'
         TAG_PREFIX: "preprod"
         REGION: "us-east-2"
