@@ -4,11 +4,11 @@ pipeline {
 
     environment {
         ECR_URI= '368772107083.dkr.ecr.us-east-2.amazonaws.com/kalibra'
-        REPOSITORY_URI: 'https://github.com/neymar32/kalibra.git'
-        TAG_PREFIX: "preprod"
-        REGION: "us-east-2"
-        BACKEND_API_ENDPOINT: "https://preprod.kalibra.app/api/"
-        DEBUG_MODE: false
+        REPOSITORY_URI= 'https://github.com/neymar32/kalibra.git'
+        TAG_PREFIX= 'preprod'
+        REGION= 'us-east-2'
+        BACKEND_API_ENDPOINT= 'https://preprod.kalibra.app/api/'
+        DEBUG_MODE= false
         AWS_ECS_SERVICE = 'test'
         AWS_ECS_TASK_DEFINITION = 'office-test'
         AWS_ECS_COMPATIBILITY = 'FARGATE'
