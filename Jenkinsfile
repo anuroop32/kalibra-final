@@ -14,6 +14,7 @@ pipeline {
         AWS_ECS_SERVICE = 'test'
         AWS_ECS_TASK_DEFINITION = 'office-test'
         AWS_ECS_COMPATIBILITY = 'FARGATE'
+        IMAGE_TAG = 'latest'
         AWS_ECS_NETWORK_MODE = 'awsvpc'
         AWS_ECS_CPU = '256'
         AWS_ECS_MEMORY = '512'
