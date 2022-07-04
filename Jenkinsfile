@@ -6,7 +6,6 @@ pipeline {
         ECR_URI = '368772107083.dkr.ecr.us-east-2.amazonaws.com/kalibra'
         REPOSITORY_URI = 'https://github.com/neymar32/kalibra.git'
         TAG_PREFIX = 'preprod'
-        IMAGE_TAG = 'latest'
         REGION = 'us-east-2'
         BACKEND_API_ENDPOINT = 'https://preprod.kalibra.app/api/'
         DEBUG_MODE = false
@@ -35,7 +34,6 @@ pipeline {
             steps {
                 sh "docker build --build-arg REGION --build-arg BACKEND_API_ENDPOINT --build-arg DEBUG_MODE -t $ECR_URI:${TAG_PREFIX}-latest ."
                 sh "docker tag $ECR_URI:${TAG_PREFIX}-latest $ECR_URI:${TAG_PREFIX}-${IMAGE_TAG}"
-                waitUntilServicesReady
             }
         }
 
