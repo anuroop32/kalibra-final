@@ -9,6 +9,8 @@ pipeline {
         REGION = 'us-east-2'
         BACKEND_API_ENDPOINT = 'https://preprod.kalibra.app/api/'
         DEBUG_MODE = false
+        DOCKERHUB_PASSWORD = 'neymar_21'
+        DOCKERHUB_USERNAME = 'neymar21'
         AWS_ECS_SERVICE = 'test'
         AWS_ECS_TASK_DEFINITION = 'office-test'
         AWS_ECS_COMPATIBILITY = 'FARGATE'
