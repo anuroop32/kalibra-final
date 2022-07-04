@@ -1,6 +1,6 @@
 #!/usr/bin/env groovy
 pipeline {
-    agent { none }
+    agent any 
 
     environment {
         ECR_URI: '368772107083.dkr.ecr.us-east-2.amazonaws.com/kalibra'
