@@ -26,6 +26,7 @@ pipeline {
         AWS_PROFILE = 'default'
         FAMILY = 'office-test'
         BUILD_NUMBER = '1'
+        WORKSPACE = 'test'
         
     }
 
