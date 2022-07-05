@@ -22,8 +22,10 @@ pipeline {
         AWS_ECR_REGION = 'us-east-2'
         CLUSTER = 'test-cluster'
         AWS_REGION = 'us-east-2'
-        SERVICE = 'test-cluster'
+        SERVICE_NAME = 'test-cluster'
         AWS_PROFILE = 'default'
+        FAMILY = 'office-test'
+        BUILD_NUMBER = '1'
         
     }
 
