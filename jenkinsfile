@@ -20,6 +20,10 @@ pipeline {
         AWS_ECS_MEMORY = '512'
         AWS_ECS_CLUSTER = 'office-test'
         AWS_ECR_REGION = 'us-east-2'
+        CLUSTER = 'test-cluster'
+        AWS_REGION = 'us-east-2'
+        SERVICE = 'test-cluster'
+        AWS_PROFILE = 'default'
     }
 
     stages {
