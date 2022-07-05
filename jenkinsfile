@@ -60,4 +60,8 @@ pipeline {
 update-service  {
     echo "Updating service for ${CLUSTER} -- ${SERVICE}"
     aws ecs update-service --profile ${AWS_PROFILE} --region ${AWS_REGION} --cluster ${CLUSTER} --service ${SERVICE} --force-new-deployment
+    }
+   }
+  }
+ }
 }
