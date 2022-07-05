@@ -11,7 +11,7 @@ pipeline {
         BACKEND_API_ENDPOINT= 'https://preprod.kalibra.app/api/'
         DEBUG_MODE= false
         AWS_ECS_SERVICE = 'test'
-        AWS_ECS_TASK_DEFINITION = 'office-test'
+        AWS_ECS_TASK_DEFINITION = 'test-cluster'
         AWS_ECS_COMPATIBILITY = 'FARGATE'
         AWS_ECS_EXECUTION_ROL = 'arn:aws:iam::368772107083:role/ecsTaskExecutionRole'
         AWS_ECS_NETWORK_MODE = 'awsvpc'
@@ -24,6 +24,7 @@ pipeline {
         AWS_REGION = 'us-east-2'
         SERVICE = 'test-cluster'
         AWS_PROFILE = 'default'
+        
     }
 
     stages {
