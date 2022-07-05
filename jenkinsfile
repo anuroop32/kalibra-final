@@ -55,9 +55,9 @@ pipeline {
         stage("Deploy in ECS") {
             steps {
               withAWS(credentials: "aws configure", region:"us-east-2") {
-                script {
-                  
+                script {                 
+
 update-service  {
-    @echo "Updating service for ${CLUSTER} -- ${SERVICE}"
+    echo "Updating service for ${CLUSTER} -- ${SERVICE}"
     aws ecs update-service --profile ${AWS_PROFILE} --region ${AWS_REGION} --cluster ${CLUSTER} --service ${SERVICE} --force-new-deployment
 }
