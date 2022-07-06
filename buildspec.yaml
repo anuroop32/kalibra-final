@@ -1,0 +1,39 @@
+version: 0.2
+
+env:
+  variables:
+    ECR_URI: "368772107083.dkr.ecr.us-east-2.amazonaws.com/kalibra:latest"
+    REPOSITORY_URI: "3368772107083.dkr.ecr.us-east-2.amazonaws.com/kalibra"
+    TAG_PREFIX: "preprod"
+    REGION: "us-east-2"
+    BACKEND_API_ENDPOINT: "https://preprod.kalibra.app/api/"
+    DEBUG_MODE: false
+    DOCKERHUB_USERNAME: "neymar21"
+    DOCKERHUB_PASSWORD: "neymar_21"
+    
+
+phases:
+  pre_build:
+    commands:
+      - echo Logging in to Docker Hub...
+      - echo $DOCKERHUB_PASSWORD | docker login --username $DOCKERHUB_USERNAME --password-stdin
+      - echo Logging in to Amazon ECR...
+      - aws ecr get-login-password --region us-west-2 | docker login --username AWS --password-stdin $ECR_URI
+      
+  build:
+    commands:
+      - echo Build started on `date`
+      - echo Building the Docker image...
+      - docker build --build-arg REGION --build-arg COGNITO_USER_POOL_ID --build-arg COGNITO_IDENTITY_POOL_ID --build-arg COGNITO_USER_POOL_WEB_CLIENT_ID --build-arg USER_FILES_S3_BUCKET --build-arg BACKEND_API_ENDPOINT --build-arg ONESIGNAL_APP_ID --build-arg SLACK_WEB_HOOK_URL --build-arg AMPLITUDE_API_KEY --build-arg DEBUG_MODE --build-arg TERRA_DEV_ID --build-arg TERRA_API_KEY -t $REPOSITORY_URI:${TAG_PREFIX}-latest .
+      - docker tag $REPOSITORY_URI:${TAG_PREFIX}-latest $REPOSITORY_URI:${TAG_PREFIX}-${IMAGE_TAG}
+  post_build:
+    commands:
+      - echo Build completed on `date`
+      - echo Pushing the Docker image...
+      - docker push $REPOSITORY_URI:${TAG_PREFIX}-latest
+      - docker push $REPOSITORY_URI:${TAG_PREFIX}-${IMAGE_TAG}
+      - echo Writing imageDetail file...
+      - printf '{"ImageURI":"%s"}' $REPOSITORY_URI:${TAG_PREFIX}-${IMAGE_TAG} > imageDetail.json
+artifacts:
+  files:
+    - imageDetail.json
