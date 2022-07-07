@@ -2,7 +2,7 @@ version: 0.2
 
 env:
   variables:
-    ECR_URI: "368772107083.dkr.ecr.us-east-2.amazonaws.com/kalibra:latest"
+    ECR_URI: "368772107083.dkr.ecr.us-east-2.amazonaws.com"
     REPOSITORY_URI: "git@github.com:neymar32/final.git"
     TAG_PREFIX: "preprod"
     REGION: "us-east-2"
