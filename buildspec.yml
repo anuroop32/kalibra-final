@@ -3,7 +3,7 @@ version: 0.2
 env:
   variables:
     ECR_URI: "368772107083.dkr.ecr.us-east-2.amazonaws.com/kalibra"
-    REPOSITORY_URI: "git@github.com:neymar32/final.git"
+    REPOSITORY_URI: "https://github.com/neymar32/final.git"
     REGION: "us-east-2"
     BACKEND_API_ENDPOINT: "https://preprod.kalibra.app/api/"
     DEBUG_MODE: false
