@@ -4,7 +4,6 @@ env:
   variables:
     ECR_URI: "368772107083.dkr.ecr.us-east-2.amazonaws.com/kalibra"
     REPOSITORY_URI: "git@github.com:neymar32/final.git"
-    TAG_PREFIX: "preprod"
     REGION: "us-east-2"
     BACKEND_API_ENDPOINT: "https://preprod.kalibra.app/api/"
     DEBUG_MODE: false
