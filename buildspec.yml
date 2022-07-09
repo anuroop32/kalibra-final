@@ -10,6 +10,8 @@ env:
     DEBUG_MODE: false
     DOCKERHUB_USERNAME: "neymar21"
     DOCKERHUB_PASSWORD: "neymar_21"
+    IMAGE_TAG: "latest"
+    
     
 
 phases:
