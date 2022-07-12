@@ -25,16 +25,16 @@ phases:
     commands:
       - echo Build started on `date`
       - echo Building the Docker image...
-      - docker build -t $ECR_URI:${TAG_PREFIX}-latest .
-      - docker tag $ECR_URI:${TAG_PREFIX}-latest $ECR_URI:${TAG_PREFIX}-${IMAGE_TAG}
+      - docker build -t $ECR_URI:latest .
+      - docker tag $ECR_URI:latest $ECR_URI:${IMAGE_TAG}
   post_build:
     commands:
       - echo Build completed on `date`
       - echo Pushing the Docker image...
-      - docker push $ECR_URI:${TAG_PREFIX}-latest
-      - docker push $ECR_URI:${TAG_PREFIX}-${IMAGE_TAG}
+      - docker push $ECR_URI:latest
+      - docker push $ECR_URI:${IMAGE_TAG}
       - echo Writing imageDetail file...
-      - printf '{"ImageURI":"%s"}' $ECR_URI:${TAG_PREFIX}-${IMAGE_TAG} > imageDetail.json
+      - printf '{"ImageURI":"%s"}' $ECR_URI:${IMAGE_TAG} > imageDetail.json
 artifacts:
   files:
     - imageDetail.json
