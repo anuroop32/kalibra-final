@@ -4,7 +4,7 @@ pipeline {
 
     environment {
         ECR_URI= '368772107083.dkr.ecr.us-east-2.amazonaws.com/kalibra'
-        REPOSITORY_URI= 'https://github.com/neymar32/kalibra.git'
+        REPOSITORY_URI= 'https://github.com/anuroop32/kalibra-final.git'
         DATE = new Date().format('yy.M')
         TAG = "${DATE}.${BUILD_NUMBER}"
         REGION= 'us-east-2'
