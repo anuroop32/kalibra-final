@@ -23,6 +23,7 @@ pipeline {
         CLUSTER = 'test-cluster'
         AWS_REGION = 'us-east-2'
         SERVICE_NAME = 'test-cluster'
+        SERVICE = 'test-cluster'
         AWS_PROFILE = 'default'
         FAMILY = 'office-test'
         BUILD_NUMBER = '1'
@@ -61,10 +62,9 @@ pipeline {
               withAWS(credentials: "aws configure", region:"us-east-2") {
                 script {
                   
-     update-services: update-service update-queue-service update-scheduler-service
 
 update-service:
-    @echo "Updating service for $(CLUSTER) -- $(SERVICE)"
+    echo "Updating service for $(CLUSTER) -- $(SERVICE)"
     aws ecs update-service --profile $(AWS_PROFILE) --region $(AWS_REGION) --cluster $(CLUSTER) --service $(SERVICE) --force-new-deployment
 
 update-queue-service:
