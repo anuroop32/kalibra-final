@@ -74,7 +74,7 @@ pipeline {
     }
                   
 
-   update-service:
+   "update-service" = {
     echo "Updating service for $(CLUSTER) -- $(SERVICE)"
     aws ecs update-service --profile $(AWS_PROFILE) --region $(AWS_REGION) --cluster $(CLUSTER) --service $(SERVICE) --force-new-deployment
 
@@ -85,7 +85,7 @@ pipeline {
    update-scheduler-service:
     @echo "Updating service for $(CLUSTER) -- $(SCHEDULER_SERVICE)"
     aws ecs update-service --profile $(AWS_PROFILE) --region $(AWS_REGION) --cluster $(CLUSTER) --service $(SCHEDULER_SERVICE) --force-new-deployment
-
+}
       }
     }
   }
