@@ -61,17 +61,29 @@ pipeline {
             steps {
               withAWS(credentials: "aws configure", region:"us-east-2") {
                 script {
+                
+                {
+    "service": {
+        "status": "ACTIVE",
+        "taskDefinition": "arn:aws:ecs:us-east-2:368772107083:task-definition/test-cluster:3",
+        "desiredCount": 0,
+        "serviceName": "test-cluster",
+        "clusterArn": "arn:aws:ecs:us-east-2:368772107083:cluster/test-cluster",
+        "serviceArn": "arn:aws:ecs:us-east-2:368772107083:service/test-cluster",
+        "runningCount": 0
+    }
+}
                   
 
-update-service:
+   update-service:
     echo "Updating service for $(CLUSTER) -- $(SERVICE)"
     aws ecs update-service --profile $(AWS_PROFILE) --region $(AWS_REGION) --cluster $(CLUSTER) --service $(SERVICE) --force-new-deployment
 
-update-queue-service:
+   update-queue-service:
     @echo "Updating service for $(CLUSTER) -- $(QUEUE_SERVICE)"
     aws ecs update-service --profile $(AWS_PROFILE) --region $(AWS_REGION) --cluster $(CLUSTER) --service $(QUEUE_SERVICE) --force-new-deployment
 
-update-scheduler-service:
+   update-scheduler-service:
     @echo "Updating service for $(CLUSTER) -- $(SCHEDULER_SERVICE)"
     aws ecs update-service --profile $(AWS_PROFILE) --region $(AWS_REGION) --cluster $(CLUSTER) --service $(SCHEDULER_SERVICE) --force-new-deployment
 
