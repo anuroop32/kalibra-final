@@ -65,11 +65,11 @@ pipeline {
                 
     "service" = {
         "status" = 'ACTIVE'
-        "taskDefinition" = "arn:aws:ecs:us-east-2:368772107083:task-definition/test-cluster:3",
-        "desiredCount" = 0,
-        "serviceName" = "test-cluster",
-        "clusterArn" = "arn:aws:ecs:us-east-2:368772107083:cluster/test-cluster",
-        "serviceArn" = "arn:aws:ecs:us-east-2:368772107083:service/test-cluster",
+        "taskDefinition" = 'arn:aws:ecs:us-east-2:368772107083:task-definition/test-cluster:3'
+        "desiredCount" = 0
+        "serviceName" = 'test-cluster'
+        "clusterArn" = 'arn:aws:ecs:us-east-2:368772107083:cluster/test-cluster'
+        "serviceArn" = 'arn:aws:ecs:us-east-2:368772107083:service/test-cluster'
         "runningCount" = 0
     }
                   
