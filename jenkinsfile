@@ -62,7 +62,7 @@ pipeline {
               withAWS(credentials: "aws configure", region:"us-east-2") {
                 script {
                 
-                {
+                
     "service": {
         "status": "ACTIVE",
         "taskDefinition": "arn:aws:ecs:us-east-2:368772107083:task-definition/test-cluster:3",
@@ -72,7 +72,6 @@ pipeline {
         "serviceArn": "arn:aws:ecs:us-east-2:368772107083:service/test-cluster",
         "runningCount": 0
     }
-}
                   
 
    update-service:
