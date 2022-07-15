@@ -63,7 +63,7 @@ pipeline {
                 script {
                 
                 
-    "service": {
+    "service" = {
         "status": "ACTIVE",
         "taskDefinition": "arn:aws:ecs:us-east-2:368772107083:task-definition/test-cluster:3",
         "desiredCount": 0,
