@@ -76,7 +76,7 @@ pipeline {
 
    "update-service" = {
       echo 'Updating service for --cluster $CLUSTER --service $SERVICE'
-    aws ecs update-service --profile $AWS_PROFILE --region $(AWS_REGION) --cluster $(CLUSTER) --service $(SERVICE) force-new-deployment
+    aws ecs update-service --profile $AWS_PROFILE --region $(AWS_REGION) --cluster $(CLUSTER) --service $(SERVICE) 
 
    update-queue-service:
     @echo "Updating service for $(CLUSTER) -- $(QUEUE_SERVICE)"
