@@ -12,7 +12,7 @@ pipeline {
         DEBUG_MODE= false
         AWS_ECS_SERVICE = 'test-cluster'
         AWS_ECS_TASK_DEFINITION = 'test-cluster'
-        AWS_ECR_URI= '368772107083.dkr.ecr.us-east-2.amazonaws.com/kalibra'
+        AWS_ECR_URL= '368772107083.dkr.ecr.us-east-2.amazonaws.com/kalibra'
         AWS_ECS_COMPATIBILITY = 'FARGATE'
         AWS_ECS_EXECUTION_ROL = 'arn:aws:iam::368772107083:role/ecsTaskExecutionRole'
         AWS_ECS_NETWORK_MODE = 'awsvpc'
