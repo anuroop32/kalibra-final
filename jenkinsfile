@@ -16,8 +16,7 @@ pipeline {
         AWS_ECS_COMPATIBILITY = 'FARGATE'
         AWS_ECS_EXECUTION_ROL = 'arn:aws:iam::368772107083:role/ecsTaskExecutionRole'
         AWS_ECS_NETWORK_MODE = 'awsvpc'
-        AWS_ECS_TASK_DEFINITION_PATH = 'file://ecs/container-definition-update-image.json
-'
+        AWS_ECS_TASK_DEFINITION_PATH = 'file://ecs/container-definition-update-image.json'
         AWS_ECS_CPU = '256'
         AWS_ECS_MEMORY = '512'
         AWS_ECS_CLUSTER = 'office-test'
