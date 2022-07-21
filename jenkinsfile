@@ -61,7 +61,7 @@ pipeline {
  
 stage('Deploy in ECS') {
    steps {
-    withCredentials([string(credentialsId: 'variable: 'AWS_ECS_EXECUTION_ROL'),string(variable: 'AWS_ECR_URL')]) 
+    withCredentials([string(credentialsId: 'variable: 'AWS_ECS_EXECUTION_ROL'),string('variable: 'AWS_ECR_URL')]) 
     {
       script {
         updateContainerDefinitionJsonWithImageVersion()
