@@ -1,0 +1,6 @@
+make --dry-run --always-make --keep-going --print-directory
+make: Entering directory '/home/miri/Downloads/latest/kalibra3MobileFE-main'
+make: Leaving directory '/home/miri/Downloads/latest/kalibra3MobileFE-main'
+ 
+makefile:48: *** missing separator.  Stop.
+
