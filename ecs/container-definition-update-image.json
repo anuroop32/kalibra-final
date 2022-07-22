@@ -63,11 +63,11 @@
     "FARGATE"
   ],
   "networkMode": "awsvpc",
-  "runtimePlatform": { 
-  "operatingSystemFamily": "LINUX",
+  "runtimePlatform":{
+   "operatingSystemFamily": "LINUX"
+  },
   "cpu": "512",
   "revision": "5",
   "status": "ACTIVE",
   "volumes": []
- }
 ]
