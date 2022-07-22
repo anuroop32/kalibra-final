@@ -22,8 +22,7 @@
       "image": "368772107083.dkr.ecr.us-east-2.amazonaws.com/kalibra:latest",
       "essential": true,
       "name": "nestjs"
-    }
-  ],
+    },
   "placementConstraints": [],
   "memory": "1024",
   "taskRoleArn": "arn:aws:iam::368772107083:role/ecsTaskExecutionRole",
